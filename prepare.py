@@ -56,17 +56,16 @@ def yazi_yaz(img,yazi,x,y):
     cv2.putText(img,yazi, (x,y),cv2.FONT_HERSHEY_SIMPLEX, 1.5,(0,255,0),2)
 
 def predict(test_img):
-    img = test_img
-    yuz,rect = yuztespit(img)
+    yuz,rect = yuztespit(test_img)
     etiket = face_recognizer.predict(yuz)
     etiket_ic = elemanlar[etiket[0]]
-    kare_ciz(img,rect)
-    yazi_yaz(img,etiket_ic,rect[0],rect[1]-5)
+    kare_ciz(test_img,rect)
+    yazi_yaz(test_img,etiket_ic,rect[0],rect[1]-5)
     cv2.imshow("deneme",test_img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
 test_img = cv2.imread("deneme.jpg")
 predict_img = predict(test_img)
-test_img = cv2.imread("cem.jpg")
-predict_img = predict(test_img)
+test_img2 = cv2.imread("cem.jpg")
+predict_img = predict(test_img2)
